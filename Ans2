@@ -1,0 +1,19 @@
+//Steps to Configuring an Express Application:
+//Step 1: Writing the following command in terminal, to create a nodejs application, because our express server will work inside the node application.
+Command- npm init
+
+//above command is used for initialization.
+// We can use "npm init -y" for default initialization.
+//Step 2:  To install necessary dependencies for our application, us the following command:
+npm install express
+
+//This will create the projet structure with node_modules, package.json &package-lockjson files.
+//Step3:Now we will create a app.js file and write the express code in it.
+
+//Step4: To run the application: Now as we have created a server now we can successfully start running it to see that if it’s working, write this command in the terminal to start the express server. 
+
+node app.js
+
+Now with all of this, we have created and run the server successfully.
+//Step 5: Now we will set all the routes for our application. 
+//Step6:  Save this code, restart the server, and open the localhost on the given port. 

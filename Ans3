@@ -1,0 +1,105 @@
+For rendering views, we have to install ejs to embed javascript to html pages.
+firstly run the following command-
+npm install ejs
+then, run the next command which is-
+npm install ejs --save
+then, all the dependencies will be added.
+then execute the following code of javascript-
+
+// Set express as Node.js web application server framework.
+// To install express before using it as an application server by using:
+
+// "npm install express" command.
+var express = require('express');
+var app = express();
+
+// Set EJS as templating engine
+app.set('view engine', 'ejs');
+
+Ejs looks directly to the views folder of the project by default.
+Then make the home.ejs file in your project.
+*please check the home.html file for the code.
+Now we will render home page on a request by the user by the following javascript code:
+app.get('/', (req, res)=>{
+
+// The render method takes the name of the HTML page to be rendered as input
+// This page should be in the views folder
+
+res.render('home');
+
+});
+after this, home page will be displayed on the local host on requesting.
+To add any dynamic content this reder mwthod takes second paramteer as aobject with the help of following code:
+
+app.get('/', (req, res)=>{
+
+res.render('home', {name:'Vanshika'});// we can have several other prop.as objects but here we are paassing only name.
+
+});
+
+var server = app.listen(4000, function(){
+	console.log('listening to port 4000')
+});
+now we will embed name to the HTML oage by the following code:
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+	<style type="text/css" media="screen">
+		body {
+			background-color: lightcyan;
+			text-decoration-color: white;
+			font-size:7em;
+		}
+	</style>
+</head>
+<body>
+	<center>
+		This is the home page.<br/>
+		Welcome <%=name%>, to our home page.// this will render the name from javascript code to here.
+	</center>
+</body>
+</html>		
+now, emebed normal javascript code;
+app.get('/', (req, res)=>{
+
+// The render method takes the name of the html page to be rendered as input.
+// This page should be in views folder .
+var data = {name:'Vanshika',
+	hobbies:['sketching', 'playing chess']}
+
+res.render('home', {data:data});
+});
+
+var server = app.listen(4000, function() {
+	console.log('listening to port 4000')
+});
+after this, the final HTML code will be:
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+	<style type="text/css" media="screen">
+		body {
+			background-color: skyblue;
+			text-decoration-color: white;
+			font-size:5em;
+		}
+	</style>
+</head>
+
+<body>
+	Hobbies of <%=data.name%> are:<br/>// this will render the hobbies from the above javascript code.
+	
+	<ul>
+		<% data.hobbies.forEach((item)=>{%>
+		<li><%=item%></li>
+		<%});%>
+	</ul>
+</body>
+
+</html>
+
+
+
+
